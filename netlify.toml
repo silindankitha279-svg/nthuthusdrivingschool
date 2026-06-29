@@ -1,0 +1,22 @@
+# Netlify configuration file
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Enforce HTTPS on the browser side for 1 year, including all subdomains and preloading
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # Ensure any HTTP resources are automatically upgraded to HTTPS
+    Content-Security-Policy = "upgrade-insecure-requests"
+    
+    # Prevent clickjacking attacks by ensuring page cannot be embedded in frames
+    X-Frame-Options = "DENY"
+    
+    # Prevent MIME type sniffing
+    X-Content-Type-Options = "nosniff"
+    
+    # Enable browser XSS protection
+    X-XSS-Protection = "1; mode=block"
+    
+    # Control how much referrer info is sent with requests
+    Referrer-Policy = "strict-origin-when-cross-origin"
